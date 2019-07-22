@@ -11,6 +11,8 @@ public class Token {
 
     private Integer expires_in;
 
+    private String error;
+
     public String getClient_id() {
         return client_id;
     }
@@ -35,12 +37,21 @@ public class Token {
         this.expires_in = expires_in;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public Token() {
+
     }
 
     public Token(String client_id) {
         this.client_id = client_id;
         this.access_token = UUID.randomUUID().toString().replace("-", "");
-        this.expires_in = 1800;
+        this.expires_in = 3600;
     }
 }
