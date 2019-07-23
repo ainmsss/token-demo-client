@@ -59,7 +59,7 @@ public class Main {
     }
 
     private static String getToken() {
-        String url = "http://39.108.144.152:8100/api/token?client_id=123456&client_secret=123abc";
+        String url = "http://103.133.133.41/api/token?client_id=123456&client_secret=123abc";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet get = new HttpGet(url);
         get.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:50.0) Gecko/20100101 Firefox/50.0");
@@ -74,7 +74,7 @@ public class Main {
 
     private static String applicants(String client_id, String token) {
         String applyInfo = getApplyInfo();
-        String url = "http://39.108.144.152:8100/api/applicants?client_id=" + client_id + "&access_token=" + token;
+        String url = "http://103.133.133.41/api/applicants?client_id=" + client_id + "&access_token=" + token;
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
         StringEntity requestEntity = new StringEntity(applyInfo,"utf-8");
