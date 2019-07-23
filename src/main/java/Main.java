@@ -43,7 +43,7 @@ public class Main {
                 "      \"type\": \"Single Entry Visa\"\n" +
                 "    },\n" +
                 "    \"phoneNumber\": \"+86 13522568027\",\n" +
-                "    \"email\": \"xiulian@qq.com\"\n" +
+                "    \"email\": \"xiulian@qq.com\",\n" +
                 "    \"creditscore\": \"0\"\n" +
                 "}";
         return params;
