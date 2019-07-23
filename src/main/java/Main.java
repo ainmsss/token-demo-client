@@ -44,6 +44,7 @@ public class Main {
                 "    },\n" +
                 "    \"phoneNumber\": \"+86 13522568027\",\n" +
                 "    \"email\": \"xiulian@qq.com\"\n" +
+                "    \"creditscore\": \"0\"\n" +
                 "}";
         return params;
     }
