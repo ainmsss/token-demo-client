@@ -9,17 +9,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 public class Main {
 
-    static String getApplyInfo(String token){
+    static String getApplyInfo(){
         String params = "{\n" +
-                "  \"client_id\": \"123456\",\n" +
-                "  \"access_token\": \"" + token + "\",\n" +
-                "  \"title\": \"test\",\n" +
-                "  \"content\": {\n" +
                 "    \"firstNameEnglish\": \"Xiu Lian\",\n" +
                 "    \"lastNameEnglish\": \"Lee\",\n" +
                 "    \"firstNameChinese\": \"秀莲\",\n" +
@@ -50,7 +44,6 @@ public class Main {
                 "    },\n" +
                 "    \"phoneNumber\": \"+86 13522568027\",\n" +
                 "    \"email\": \"xiulian@qq.com\"\n" +
-                "  }\n" +
                 "}";
         return params;
     }
@@ -59,7 +52,7 @@ public class Main {
         String content = getToken();
         Token token = JSON.parseObject(content, Token.class);
         System.out.println(token.getAccess_token());
-        String result = applicants(token.getAccess_token());
+        String result = applicants(token.getClient_id(), token.getAccess_token());
         System.out.println(result);
 //        System.out.println(getToken());
     }
@@ -78,12 +71,12 @@ public class Main {
         return "";
     }
 
-    private static String applicants(String token) {
-        String params = getApplyInfo(token);
-        String url = "http://39.108.144.152:8100/api/applicants";
+    private static String applicants(String client_id, String token) {
+        String applyInfo = getApplyInfo();
+        String url = "http://39.108.144.152:8100/api/applicants?client_id=" + client_id + "&access_token=" + token;
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
-        StringEntity requestEntity = new StringEntity(params,"utf-8");
+        StringEntity requestEntity = new StringEntity(applyInfo,"utf-8");
         requestEntity.setContentEncoding("UTF-8");
         post.setHeader("Content-type", "application/json");
         post.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:50.0) Gecko/20100101 Firefox/50.0");
